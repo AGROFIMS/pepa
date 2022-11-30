@@ -1,6 +1,6 @@
 `r i = {{i}}`
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 
 # Check design
 
@@ -53,7 +53,7 @@ cv <- (at[rr, 3])^0.5 / mean(dfr[, trait.est]) * 100
 
 ### {{i+1}}.1.1. Means by individual factor levels
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 
 for (j in 1:lc$nf)
   print(tapply(dfr[, trait.est], dfr[, factors[j]], mean))
@@ -62,7 +62,7 @@ for (j in 1:lc$nf)
 
 ### {{i+1}}.1.2. Means by factor levels combinations
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 
 # Create expression for list of factors
   
@@ -85,7 +85,7 @@ tapply(dfr[, trait.est], eval(parse(text = lf.expr)), mean)
 
 As it was stated in section 1, it is supposed that the error has a normal distribution with the same variance for all the combinations among the levels of the factors. The following plots help to evaluate these assumptions:
 
-```{r echo = FALSE, fig.height = 5, fig.width = 10}
+```{r echo = TRUE, fig.height = 5, fig.width = 10}
 
 par(mfrow = c(1, 2))
 suppressWarnings(plot(model, which = 1))
@@ -97,7 +97,7 @@ Funnel shapes for the first plot may suggest heterogeneity of variances while de
 
 ### {{i+1}}.2.2. ANOVA table
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 
 at
 

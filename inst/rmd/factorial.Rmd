@@ -27,7 +27,7 @@ params:
   author: "no data"
 ---
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 library(knitr)
 
 # Pass arguments
@@ -77,12 +77,12 @@ In this model we assume that the errors are independent and have a normal distri
 `r if (nmis.fac == 1) paste("Note: There is", nmis.fac, "row with missing values for classifications factors. This row has been deleted.")`
 `r if (nmis.fac > 1) paste("Note: There are", nmis.fac, "rows with missing values for classifications factors. These rows have been deleted.")`
 
-```{r include = FALSE}
+```{r include = TRUE}
 out <- NULL
 for (i in 1:length(traits)) {
   lc <- ck.f(traits[i], factors, rep, dfr)
   if (lc$nt.0 == 0 & lc$nrep > 1 & lc$nt.mult == 0 & lc$pmis <= maxp) {
-    out <- c(out, knit_expand('child_f.Rmd'))
+    out <- c(out, knit_expand('child_f.Rmd',))
   } else {
     out <- c(out, knit_expand('child_f_fail.Rmd'))
   }

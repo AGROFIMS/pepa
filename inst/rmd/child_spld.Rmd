@@ -2,7 +2,7 @@
 
 # {{i+1}}. Analysis for trait `r traits[i]`
 
-```{r echo = FALSE, results = 'hide'}
+```{r echo = TRUE, results = 'hide'}
 y <- dfr[, traits[i]]
 
 if (is.null(sspf)) {
@@ -14,6 +14,6 @@ if (is.null(sspf)) {
 
 ## {{i+1}}.1. ANOVA
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 model$ANOVA
 ```

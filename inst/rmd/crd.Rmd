@@ -33,7 +33,7 @@ knitr::opts_chunk$set(comment = NA)
 
 ```
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 library(knitr)
 
 # Pass arguments
@@ -82,12 +82,12 @@ In this model we assume that the errors are independent and have a normal distri
 `r if (nmis.fac > 1) paste("Note: There are", nmis.fac, "rows with missing values for classifications factors. These rows have been deleted.")`
 
 
-```{r include = FALSE}
+```{r include = TRUE}
 out <- NULL
 for (i in 1:length(traits)) {
   lc <- ck.crd(traits[i], trt, dfr)
   if (lc$ng.0 == 0 & lc$nrep > 1 & lc$ng > 2) {
-    out <- c(out, knit_expand('child_crd.Rmd'))
+    out <- c(out, knit_expand('child_crd.Rmd',echo=TRUE))
   } else {
     out <- c(out, knit_expand('child_crd_fail.Rmd'))
   }

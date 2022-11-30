@@ -2,7 +2,7 @@
 
 # {{i+1}}. Analysis for trait `r traits[i]`
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 lc <- ck.crd(traits[i], trt, dfr)
 model <- aov(dfr[, traits[i]] ~ dfr[, trt])
 model$terms[[2]] <- traits[i]
@@ -42,7 +42,7 @@ hist(mydata$trait)
 boxplot(mydata$trait)
 ```
 
-```{r echo = FALSE, fig.height = 5, fig.width = 10}
+```{r echo = TRUE, fig.height = 5, fig.width = 10}
 par(mfrow = c(1, 2))
 hist(dfr[, traits[i]], main = paste("Histogram of", traits[i]), xlab = traits[i])
 boxplot(dfr[, traits[i]], ylab = traits[i])
@@ -54,7 +54,7 @@ boxplot(dfr[, traits[i]], ylab = traits[i])
 st4gi::msdplot(trait, treatment, mydata, conf = 1, pch = 4)
 ```
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 if (lc$ng < 10)
   msdplot(traits[i], trt, dfr, conf = 1, xlab = trt.lab.sc, ylab = traits[i], pch = 4)
 ```
@@ -70,7 +70,7 @@ at <- anova(model)
 at
 ```
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 at
 ```
 
@@ -90,7 +90,7 @@ rownames(at.sub)[2:3] <- c("Exp. Error", "Sampling Error")
 at.sub
 ```
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 if (show.anova.sub)
   at2
 ```
@@ -109,7 +109,7 @@ plot(model, which = 1)
 plot(model, which = 2)
 ```
 
-```{r echo = FALSE, fig.height = 5, fig.width = 10}
+```{r echo = TRUE, fig.height = 5, fig.width = 10}
 par(mfrow = c(1, 2))
 plot(model, which = 1)
 plot(model, which = 2)
@@ -127,7 +127,7 @@ Any trend in the residuals in the left plot would violate the assumption of inde
 agricolae::LSD.test(mydata$trait, mydata$treatment, at[2, 1], at[2, 3])$groups
 ```
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 if (at[1, 5] < 0.05) {
   means <- dfr[, traits[i]]
   agricolae::LSD.test(means, dfr[, trt], at[2, 1], at[2, 3])$groups
@@ -140,7 +140,7 @@ if (at[1, 5] < 0.05) {
 agricolae::HSD.test(mydata$trait, mydata$treatment, at[2, 1], at[2, 3])$groups
 ```
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 if (at[1, 5] < 0.05)
   agricolae::HSD.test(means, dfr[, trt], at[2, 1], at[2, 3])$groups
 ```
@@ -149,7 +149,7 @@ if (at[1, 5] < 0.05)
 tapply(mydata$trait, mydata$treatment, mean, na.rm = TRUE)
 ```
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 if (at[1, 5] > 0.05)
   tapply(dfr[, traits[i]], dfr[, trt], mean, na.rm = TRUE)
 ```
@@ -164,7 +164,7 @@ vc <- data.frame(lme4::VarCorr(model))
 vc[, c(1, 4, 5)]
 ```
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 y <- dfr[, traits[i]]
 g <- dfr[, trt]
 ff <- as.formula(y ~ (1|g))

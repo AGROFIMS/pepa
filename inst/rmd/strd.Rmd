@@ -27,7 +27,7 @@ params:
   author: "no data"
 ---
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 library(knitr)
 
 # Pass arguments
@@ -74,7 +74,7 @@ In this model $(\alpha\gamma)_{ik}$, $(\beta\gamma)_{jk}$, and $(\alpha\beta\gam
 `r if (nmis.fac == 1) paste("Note: There is", nmis.fac, "data row with missing values for classifications factors. This row has been deleted.")`
 `r if (nmis.fac > 1) paste("Note: There are", nmis.fac, "data rows with missing values for classifications factors. These rows have been deleted.")`
 
-```{r include = FALSE}
+```{r include = TRUE}
 out <- NULL
 for (i in 1:length(traits))
   out <- c(out, knit_expand('child_strd.Rmd'))
